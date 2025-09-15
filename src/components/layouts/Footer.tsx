@@ -129,7 +129,7 @@ const Footer = () => {
         {/* Bottom section */}
         <div className="flex md:flex-row flex-col justify-between items-center pt-8 border-t border-border/50">
           <p className="mb-4 md:mb-0 text-muted-foreground text-sm">
-            © {currentYear} {APP_INFO.NAME}. Tất cả quyền được bảo lưu.
+            © {currentYear} {APP_INFO.NAME}. 
           </p>
 
           {/* Social links */}

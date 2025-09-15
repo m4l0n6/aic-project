@@ -2,7 +2,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { APP_INFO } from "@/constants/app";
-// import ThemeToggle from "@/components/ThemeToggle";
+import ThemeToggle from "../ThemeToggle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,20 +10,18 @@ const Header = () => {
   const navigation = [
     { name: "Trang chủ", href: "#home" },
     { name: "Dịch vụ", href: "#services" },
-    { name: "Về chúng tôi", href: "#about" },
-    { name: "Liên hệ", href: "#contact" },
   ];
 
   return (
     <header className="top-0 z-50 fixed bg-background/80 backdrop-blur-lg border-b border-border w-full">
       <nav className="mx-auto px-4 lg:px-6 py-4 container">
         <div className="flex justify-between items-center">
-          {/* Logo */}
-          <div className="flex items-center">
+          <a href="/" className="flex items-center">
+            <div>{/* Logo */}</div>
             <span className="bg-clip-text bg-gradient-primary font-bold text-transparent text-2xl">
               {APP_INFO.NAME}
             </span>
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -40,7 +38,7 @@ const Header = () => {
 
           {/* CTA Button & Theme Toggle */}
           <div className="hidden md:flex items-center gap-3">
-            {/* <ThemeToggle /> */}
+            <ThemeToggle />
             <Button
               variant="default"
               className="bg-gradient-primary shadow-soft hover:shadow-elegant border-0 transition-all duration-300"
@@ -50,16 +48,19 @@ const Header = () => {
           </div>
 
           {/* Mobile menu button */}
-          <button
-            className="md:hidden hover:bg-muted p-2 rounded-lg transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          <div className="md:hidden flex items-center gap-3">
+            <ThemeToggle />
+            <button
+              className="hover:bg-muted p-2 rounded-lg transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -77,7 +78,6 @@ const Header = () => {
                 </a>
               ))}
               <div className="flex items-center gap-3 mt-4">
-                {/* <ThemeToggle /> */}
                 <Button
                   variant="default"
                   className="flex-1 bg-gradient-primary border-0"
