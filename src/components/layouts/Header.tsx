@@ -1,8 +1,9 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { APP_INFO } from "@/constants/app";
+import { APP_INFO } from "@/lib/constants/app";
 import ThemeToggle from "../ThemeToggle";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,12 +40,14 @@ const Header = () => {
           {/* CTA Button & Theme Toggle */}
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
-            <Button
-              variant="default"
-              className="bg-gradient-primary shadow-soft hover:shadow-elegant border-0 transition-all duration-300"
-            >
-              Bắt đầu
-            </Button>
+            <Link to="/login">
+              <Button
+                variant="default"
+                className="bg-gradient-primary shadow-soft hover:shadow-elegant border-0 transition-all duration-300"
+              >
+                Bắt đầu
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}

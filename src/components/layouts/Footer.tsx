@@ -7,7 +7,7 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
-import { APP_INFO } from "@/constants/app";
+import { APP_INFO } from "@/lib/constants/app";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -44,7 +44,7 @@ const Footer = () => {
     <footer className="bg-gradient-to-br from-muted/30 to-background border-t border-border/50">
       <div className="mx-auto px-4 lg:px-6 py-12 container">
         {/* Main footer content */}
-        <div className="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-8">
+        <div className="hidden gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-8">
           {/* Company info */}
           <div className="lg:col-span-1">
             <div className="mb-4">
