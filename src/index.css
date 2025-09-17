@@ -117,12 +117,17 @@
     background-image: var(--gradient-primary);
 }
 
+.text-gradient-primary {
+    color: transparent;
+    background-image: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
-  }
-  button {
-    @apply cursor-pointer;
   }
   body {
     @apply bg-background text-foreground;

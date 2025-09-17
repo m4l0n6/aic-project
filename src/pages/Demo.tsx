@@ -10,7 +10,7 @@ import {
   DropzoneContent,
   DropzoneEmptyState,
 } from "@/components/ui/shadcn-io/dropzone";
-import { Button } from "./ui/button";
+import { Button } from "../components/ui/button";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import { Loader2Icon, ArrowLeft, Play, X, Pause } from "lucide-react";
