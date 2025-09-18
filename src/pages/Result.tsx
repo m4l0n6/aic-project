@@ -17,42 +17,48 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Contrast, Palette, Zap, AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
+import { Contrast, Palette, Zap, AlertCircleIcon, CheckCircle2Icon, CheckIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import CircularProgress from "@/components/ui/shadcn-io/circular";
 import * as React from "react";
 
 
 const analysisData = [
   {
-    title: "Time and tempo",
-    description: "Analysis of timing and tempo accuracy.",
+    title: "Note Accuracy",
+    description: "Evaluation of correct notes played.",
     score: 75,
   },
   {
-    title: "Pitch accuracy",
-    description: "Evaluation of pitch accuracy and intonation.",
+    title: "Rhythm & Tempo",
+    description: "Assessment of rhythm and tempo consistency.",
     score: 80,
   },
   {
-    title: "Rhythm and dynamics",
-    description: "Assessment of rhythm and dynamic control.",
+    title: "Note Duration",
+    description: "Analysis of note lengths and timing.",
     score: 70,
   },
   {
-    title: "Expression and interpretation",
-    description: "Judgment of musical expression and interpretation.",
+    title: "Expression",
+    description: "Judgment of musical expression",
     score: 85,
   },
   {
-    title: "Skill proficiency",
-    description: "Overall proficiency in playing the piece.",
+    title: "Timing & Synchronization",
+    description: "Assessment of timing and synchronization with the teacher.",
     score: 78,
   },
   {
-    title: "Technical execution",
-    description: "Evaluation of technical skills and execution.",
+    title: "Dynamics  ",
+    description: "Evaluation of dynamic control and expression.",
     score: 82,
+  },
+  {
+    title: "Consistency",
+    description: "Evaluation of consistency in performance.",
+    score: 80,
   },
 ];
 
@@ -89,7 +95,7 @@ export default function Result() {
         direction="horizontal"
         className="rounded-lg md:min-w-[450px]"
       >
-        <ResizablePanel defaultSize={65} className="h-[90svh]">
+        <ResizablePanel defaultSize={65} className="shadow-lg h-[90svh]">
           <Card className="w-full h-full">
             <CardHeader className="border-b">
               <CardTitle className="text-xl">Analysis Result</CardTitle>
@@ -138,8 +144,12 @@ export default function Result() {
                       <Card key={index} className="mb-4 py-2">
                         <CardContent>
                           <AccordionItem key={index} value={`item-${index}`}>
-                            <AccordionTrigger>
+                            <AccordionTrigger className="hover:no-underline">
                               <div className="flex items-start gap-3">
+                                <Badge className="bg-green-500 hover:bg-green-600">
+                                  <CheckIcon />
+                                  Pass
+                                </Badge>
                                 <Icon />
                                 {title}
                               </div>
@@ -167,35 +177,35 @@ export default function Result() {
           </Card>
         </ResizablePanel>
         <ResizableHandle withHandle className="m-5" />
-        <ResizablePanel defaultSize={35}>  
-            <Card className="w-full h-full">
-              <CardHeader className="border-b">
-                <CardTitle className="text-xl">Audio input file</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col justify-center gap-4 h-full">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Student Audio File</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground text-sm">
-                      This is the audio file uploaded by the student.
-                    </p>
-                  </CardContent>
-                </Card>
+        <ResizablePanel defaultSize={35} className="shadow-lg h-[90svh]">
+          <Card className="w-full h-full">
+            <CardHeader className="border-b">
+              <CardTitle className="text-xl">Audio input file</CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col justify-center gap-4 h-full">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Student Audio File</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground text-sm">
+                    This is the audio file uploaded by the student.
+                  </p>
+                </CardContent>
+              </Card>
 
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Teacher Audio File</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground text-sm">
-                      This is the audio file uploaded by the teacher.
-                    </p>
-                  </CardContent>
-                </Card>
-              </CardContent>
-            </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Teacher Audio File</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground text-sm">
+                    This is the audio file uploaded by the teacher.
+                  </p>
+                </CardContent>
+              </Card>
+            </CardContent>
+          </Card>
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>

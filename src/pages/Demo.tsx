@@ -3,74 +3,85 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { useState, useEffect, useRef} from "react";
-import WaveSurfer from "wavesurfer.js";
+import { useWaveform } from "../hooks/useWaveform";
 import {
   Dropzone,
   DropzoneContent,
   DropzoneEmptyState,
 } from "@/components/ui/shadcn-io/dropzone";
+import { useState } from "react";
 import { Button } from "../components/ui/button";
 import { toast } from "sonner";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Loader2Icon, ArrowLeft, Play, X, Pause } from "lucide-react";
-
-// Custom hook cho mỗi waveform
-function useWaveform() {
-  const waveformRef = useRef<HTMLDivElement>(null);
-  const wavesurferRef = useRef<WaveSurfer | null>(null);
-  const [files, setFiles] = useState<File[] | undefined>();
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  useEffect(() => {
-    if (files && waveformRef.current) {
-      const url = URL.createObjectURL(files[0]);
-      wavesurferRef.current?.destroy();
-      wavesurferRef.current = WaveSurfer.create({
-        container: waveformRef.current,
-        waveColor: "#333",
-        progressColor: "#FFF",
-        cursorColor: "#fff",
-        barWidth: 3,
-        barRadius: 3,
-        height: 350,
-      });
-      wavesurferRef.current.load(url);
-    }
-  }, [files]);
-
-  const handleDrop = (f: File[]) => setFiles(f);
-  const handleRemove = () => setFiles(undefined);
-  const togglePlay = () => {
-    if (wavesurferRef.current) {
-      wavesurferRef.current.playPause();
-      setIsPlaying((p) => !p);
-    }
-  };
-
-  return {
-    waveformRef,
-    files,
-    setFiles,
-    handleDrop,
-    handleRemove,
-    isPlaying,
-    togglePlay,
-  };
-}
+import { LoadingProgress } from "@/components/ui/shadcn-io/loading-process.";
 
 const Demo = () => {
   const teacher = useWaveform();
   const student = useWaveform();
-  const [isSummit, setIsSummit] = useState(false);
+  const navigate = useNavigate();
+
+  const [progress, setProgress] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState("");
+  const startLoading = () => {
+    setIsLoading(true);
+    setProgress(0);
+    setStatus("Connecting to server...");
+
+    // Simulate different loading stages
+    setTimeout(() => {
+      setProgress(25);
+      setStatus("Fetching data...");
+    }, 1000);
+
+    setTimeout(() => {
+      setProgress(50);
+      setStatus("Processing results...");
+    }, 1600);
+
+    setTimeout(() => {
+      setProgress(75);
+      setStatus("Preparing display...");
+    }, 2800);
+
+    setTimeout(() => {
+      setProgress(100);
+      setStatus("Complete!");
+      setTimeout(() => {
+        navigate("/result");
+      }, 1000);
+    }, 3600);
+  };
 
   const handleSummit = () => {
     if (!teacher.files || !student.files) {
       toast.error("Please upload both teacher and student files");
       return;
     }
-    setIsSummit(true);
+    startLoading();
   };
+
+  function Loader() {
+    return (
+      <div className="flex justify-center items-center w-full h-screen">
+        <div>
+          <img src="ai-analysis.gif" alt="" className="w-full"/>
+          <LoadingProgress value={progress} className="w-[500px]" />
+          <div className="mt-5 text-center">
+            <p className="pb-4 text-muted-foreground text-sm">{status}</p>
+            {progress < 100 && (
+              <p className="mt-1 text-muted-foreground">Please wait...</p>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return <Loader />;
+  } 
 
   return (
     <div className="relative flex flex-col justify-center items-center mx-10 min-h-screen">
@@ -144,7 +155,7 @@ const Demo = () => {
       </ResizablePanelGroup>
       <div className="mt-5 text-muted-foreground text-sm">
         <Button size="lg" className="bg-gradient-primary" onClick={handleSummit}>
-          {isSummit ? (
+          {isLoading ? (
             <>
               <Loader2Icon className="animate-spin" />
               Please wait

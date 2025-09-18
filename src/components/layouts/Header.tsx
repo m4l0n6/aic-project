@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { APP_INFO } from "@/lib/constants/app";
 import ThemeToggle from "../ThemeToggle";
+// import { AnimatedThemeToggler } from "../AnimationToggle";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -39,6 +40,7 @@ const Header = () => {
 
           {/* CTA Button & Theme Toggle */}
           <div className="hidden md:flex items-center gap-3">
+            {/* <AnimatedThemeToggler /> */}
             <ThemeToggle />
             <Link to="/login">
               <Button
