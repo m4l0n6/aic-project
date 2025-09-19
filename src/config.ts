@@ -7,6 +7,8 @@ const Setting = {
     "border-[color:var(linear-gradient(180deg,#0A0909_0%,#0A0D14_41.35%,#09101F_75.48%))]",
   cardBackgroundGradient:
     "bg-[linear-gradient(296deg,rgba(24,26,43,0.20)_4.73%,rgba(83,87,145,0.20)_71.31%)]",
+  secondaryGradient:
+    "bg-[linear-gradient(272deg,rgba(24,26,43,0.20)_2.99%,rgba(81,88,145,0.20)_95.69%)]",
 };
 
 export default Setting;
