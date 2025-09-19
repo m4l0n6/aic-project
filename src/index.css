@@ -133,8 +133,9 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50 cursor-none 
-    [&::-webkit-scrollbar]:w-2
+    @apply border-border outline-ring/50 cursor-none
+    /* Scrollbar styles */
+    [&::-webkit-scrollbar]:w-1
   [&::-webkit-scrollbar-track]:rounded-full
   [&::-webkit-scrollbar-track]:bg-gray-100
   [&::-webkit-scrollbar-thumb]:rounded-full

@@ -17,80 +17,36 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Contrast, Palette, Zap, AlertCircleIcon, CheckCircle2Icon, CheckIcon } from "lucide-react";
+import { AlertCircleIcon, CheckCircle2Icon, CheckIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import CircularProgress from "@/components/ui/shadcn-io/circular";
 import * as React from "react";
+import { Link } from "react-router-dom";
+import { analysisData } from "@/mock/ai-analysis";
 
-
-const analysisData = [
-  {
-    title: "Note Accuracy",
-    description: "Evaluation of correct notes played.",
-    score: 75,
-  },
-  {
-    title: "Rhythm & Tempo",
-    description: "Assessment of rhythm and tempo consistency.",
-    score: 80,
-  },
-  {
-    title: "Note Duration",
-    description: "Analysis of note lengths and timing.",
-    score: 70,
-  },
-  {
-    title: "Expression",
-    description: "Judgment of musical expression",
-    score: 85,
-  },
-  {
-    title: "Timing & Synchronization",
-    description: "Assessment of timing and synchronization with the teacher.",
-    score: 78,
-  },
-  {
-    title: "Dynamics  ",
-    description: "Evaluation of dynamic control and expression.",
-    score: 82,
-  },
-  {
-    title: "Consistency",
-    description: "Evaluation of consistency in performance.",
-    score: 80,
-  },
-];
-
-const items = [
-  {
-    title: "Is it accessible?",
-    content: "Yes. It adheres to the WAI-ARIA design pattern. ",
-    icon: Contrast,
-  },
-  {
-    title: "Is it styled?",
-    content:
-      "Yes. It comes with default styles that matches the other components' aesthetic.",
-    icon: Palette,
-  },
-  {
-    title: "Is it animated?",
-    content:
-      "Yes. It's animated by default, but you can disable it if you prefer.",
-    icon: Zap,
-  },
-];
 
 export default function Result() {
     const [progress, setProgress] = React.useState(0);
 
-    React.useEffect(() => {
-      const timer = setTimeout(() => setProgress(66), 500);
-      return () => clearTimeout(timer);
+    // Tính điểm trung bình từ analysisData
+    const averageScore = React.useMemo(() => {
+      const totalScore = analysisData.reduce((sum, item) => sum + item.score, 0);
+      return Math.round(totalScore / analysisData.length);
     }, []);
+
+    React.useEffect(() => {
+      const timer = setTimeout(() => setProgress(averageScore), 500);
+      return () => clearTimeout(timer);
+    }, [averageScore]);
   return (
     <div className="flex flex-col justify-center items-center mx-10 my-5">
+      <div className="flex gap-2 mb-2 w-full">
+        <Link to="/">
+          <Button variant="outline">Return to Home</Button>
+        </Link>
+        <Button>Download Report</Button>
+      </div>
       <ResizablePanelGroup
         direction="horizontal"
         className="rounded-lg md:min-w-[450px]"
@@ -100,9 +56,9 @@ export default function Result() {
             <CardHeader className="border-b">
               <CardTitle className="text-xl">Analysis Result</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="relative overflow-auto">
               <Tabs defaultValue="score" className="w-full">
-                <TabsList>
+                <TabsList className="top-0 z-10 sticky border-b">
                   <TabsTrigger value="score">Score</TabsTrigger>
                   <TabsTrigger value="detail">Detail</TabsTrigger>
                 </TabsList>
@@ -122,7 +78,12 @@ export default function Result() {
                       <Card className="gap-2">
                         <CardHeader className="flex flex-row justify-between items-center space-y-0 pb-2">
                           <CardTitle>{item.title}</CardTitle>
-                          <Button size="icon">{item.score}</Button>
+                          <Button
+                            size="icon"
+                            className={`${item.color} text-white`}
+                          >
+                            {item.score}
+                          </Button>
                         </CardHeader>
                         <CardContent>
                           <p className="text-muted-foreground text-sm">
@@ -140,12 +101,22 @@ export default function Result() {
                     collapsible
                     className="my-4 w-full"
                   >
-                    {items.map(({ title, content, icon: Icon }, index) => (
-                      <Card key={index} className="mb-4 py-2">
-                        <CardContent>
-                          <AccordionItem key={index} value={`item-${index}`}>
-                            <AccordionTrigger className="hover:no-underline">
-                              <div className="flex items-start gap-3">
+                    {analysisData.map(
+                      (
+                        {
+                          title,
+                          mistakes,
+                          recommendations,
+                          icon: Icon,
+                          score,
+                          passScore,
+                        },
+                        index
+                      ) => (
+                        <Card key={index} className="mb-4 py-2">
+                          <CardContent>
+                            {score >= passScore ? (
+                              <div className="flex items-start gap-3 py-4">
                                 <Badge className="bg-green-500 hover:bg-green-600">
                                   <CheckIcon />
                                   Pass
@@ -153,30 +124,60 @@ export default function Result() {
                                 <Icon />
                                 {title}
                               </div>
-                            </AccordionTrigger>
-                            <AccordionContent>
-                              <Alert variant="default" className="mb-4">
-                                <CheckCircle2Icon />
-                                <AlertTitle>Heads up!</AlertTitle>
-                                <AlertDescription>{content}</AlertDescription>
-                              </Alert>
-                              <Alert variant="destructive">
-                                <AlertCircleIcon />
-                                <AlertTitle>Heads up!</AlertTitle>
-                                <AlertDescription>{content}</AlertDescription>
-                              </Alert>
-                            </AccordionContent>
-                          </AccordionItem>
-                        </CardContent>
-                      </Card>
-                    ))}
+                            ) : (
+                              <AccordionItem
+                                key={index}
+                                value={`item-${index}`}
+                              >
+                                <AccordionTrigger className="hover:no-underline">
+                                  <div className="flex items-start gap-3">
+                                    <Badge className="bg-red-500 hover:bg-red-600">
+                                      <AlertCircleIcon />
+                                      Fail
+                                    </Badge>
+                                    <Icon />
+                                    {title}
+                                  </div>
+                                </AccordionTrigger>
+                                <AccordionContent>
+                                  <Alert variant="destructive">
+                                    <AlertCircleIcon />
+                                    <AlertTitle>Mistake</AlertTitle>
+                                    <AlertDescription>
+                                      {mistakes?.map((mistake, idx) => (
+                                        <p key={idx}>
+                                          {mistake.expected} - {mistake.actual}
+                                        </p>
+                                      ))}
+                                    </AlertDescription>
+                                  </Alert>
+                                  <Alert variant="default" className="mb-4">
+                                    <CheckCircle2Icon />
+                                    <AlertTitle>Recommendations</AlertTitle>
+                                    <AlertDescription>
+                                      {recommendations.map(
+                                        (recommendation, idx) => (
+                                          <p key={idx}>{recommendation}</p>
+                                        )
+                                      )}
+                                    </AlertDescription>
+                                  </Alert>
+                                </AccordionContent>
+                              </AccordionItem>
+                            )}
+                          </CardContent>
+                        </Card>
+                      )
+                    )}
                   </Accordion>
                 </TabsContent>
               </Tabs>
             </CardContent>
           </Card>
         </ResizablePanel>
+        
         <ResizableHandle withHandle className="m-5" />
+
         <ResizablePanel defaultSize={35} className="shadow-lg h-[90svh]">
           <Card className="w-full h-full">
             <CardHeader className="border-b">
