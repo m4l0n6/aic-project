@@ -50,7 +50,7 @@
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: linear-gradient(180deg, #0A0909 0%, #0A0D14 41.35%, #09101F 75.48%);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -73,7 +73,8 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
 
-  --gradient-primary: linear-gradient(135deg, hsl(180 85% 45%), hsl(185 90% 55%)); ;
+  --gradient-primary: linear-gradient(135deg, hsl(180 85% 45%), hsl(185 90% 55%));;
+  --gradient-black-primary: linear-gradient(90deg, #3B42FF 0%, #BFECDC 38.02%, #24AFFF 75.83%, #4FD9C7 100%);
 
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);

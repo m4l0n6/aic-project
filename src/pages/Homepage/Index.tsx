@@ -1,6 +1,6 @@
 import Header from "@/components/layouts/Header";
-import Hero from "@/components/layouts/Hero";
-import Features from "@/components/layouts/Features";
+import Hero from "@/pages/Homepage/component/Hero";
+import Features from "@/pages/Homepage/component/Features";
 import Footer from "@/components/layouts/Footer";
 
 function HomePage() {
