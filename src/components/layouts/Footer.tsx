@@ -44,7 +44,7 @@ const Footer = () => {
     <footer className="bg-gradient-to-br from-muted/30 to-background border-t border-border/50">
       <div className="mx-auto px-4 lg:px-6 py-12 container">
         {/* Main footer content */}
-        <div className="hidden gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-8">
+        <div className="hidden gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-8">
           {/* Company info */}
           <div className="lg:col-span-1">
             <div className="mb-4">
@@ -110,7 +110,7 @@ const Footer = () => {
 
           {/* Legal links */}
           <div>
-            <h3 className="mb-4 font-semibold">Pháp lý</h3>
+            <h3 className="mb-4 font-semibold">Pháp lý</h3> 
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>

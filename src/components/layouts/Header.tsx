@@ -10,12 +10,12 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
-    { name: "Trang chủ", href: "#home" },
-    { name: "Dịch vụ", href: "#services" },
+    { name: "Home", href: "#home" },
+    { name: "Features", href: "#features" },
   ];
 
   return (
-    <header className="top-0 z-50 fixed bg-background/80 backdrop-blur-lg border-b border-border w-full">
+    <header className="top-0 z-50 fixed bg-background/80 backdrop-blur-md border-b border-border w-full">
       <nav className="mx-auto px-4 lg:px-6 py-4 container">
         <div className="flex justify-between items-center">
           <a href="/" className="flex items-center">
@@ -47,7 +47,7 @@ const Header = () => {
                 variant="default"
                 className="bg-gradient-primary shadow-soft hover:shadow-elegant border-0 transition-all duration-300"
               >
-                Bắt đầu
+                Login
               </Button>
             </Link>
           </div>
@@ -87,7 +87,7 @@ const Header = () => {
                   variant="default"
                   className="flex-1 bg-gradient-primary border-0"
                 >
-                  Bắt đầu
+                  Login
                 </Button>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Highlighter } from "@/components/ui/highlighter";
 
 const Hero = () => {
   return (
@@ -19,24 +20,27 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center bg-muted/50 mb-8 px-4 py-2 border border-border/50 rounded-full">
             <span className="text-muted-foreground text-sm">
-              ✨ Chào mừng đến với tương lai
+              ✨ New Feature: AI-Powered Analytics
             </span>
           </div>
 
           {/* Main heading */}
           <h1 className="mb-6 font-bold text-4xl md:text-6xl lg:text-7xl tracking-tight">
-            Giải pháp{" "}
+            Get Instant{" "}
             <span className="bg-clip-text bg-gradient-primary text-transparent">
-              hoàn hảo
+              Feedback
             </span>
             <br />
-            cho doanh nghiệp
+            Progress Faster
           </h1>
 
           {/* Description */}
           <p className="mx-auto mb-8 max-w-2xl text-muted-foreground text-xl leading-relaxed">
-            Chúng tôi mang đến những giải pháp công nghệ tiên tiến, giúp doanh
-            nghiệp của bạn phát triển vượt bậc trong thời đại số.
+            The perfect{" "}
+            <Highlighter action="underline" color="#FF9800">
+              AI tutor piano
+            </Highlighter>{" "}
+            is your guide to mastering the piano with faster instant
           </p>
 
           {/* CTA Buttons */}
@@ -45,7 +49,7 @@ const Hero = () => {
               size="lg"
               className="group bg-gradient-primary shadow-soft hover:shadow-elegant border-0 transition-all duration-300"
             >
-              Bắt đầu ngay hôm nay
+              Start Now
               <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Button>
 
@@ -56,30 +60,12 @@ const Hero = () => {
                 className="group hover:bg-muted/50 border-border transition-all duration-300"
               >
                 <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-                Xem demo
+                View Demo
               </Button>
             </Link>
           </div>
 
           {/* Stats */}
-          <div className="gap-8 grid grid-cols-2 md:grid-cols-4 mx-auto max-w-2xl">
-            <div className="text-center">
-              <div className="mb-1 font-bold text-primary text-3xl">100+</div>
-              <div className="text-muted-foreground text-sm">Khách hàng</div>
-            </div>
-            <div className="text-center">
-              <div className="mb-1 font-bold text-primary text-3xl">99%</div>
-              <div className="text-muted-foreground text-sm">Hài lòng</div>
-            </div>
-            <div className="text-center">
-              <div className="mb-1 font-bold text-primary text-3xl">24/7</div>
-              <div className="text-muted-foreground text-sm">Hỗ trợ</div>
-            </div>
-            <div className="text-center">
-              <div className="mb-1 font-bold text-primary text-3xl">5★</div>
-              <div className="text-muted-foreground text-sm">Đánh giá</div>
-            </div>
-          </div>
         </div>
       </div>
 

@@ -1,4 +1,4 @@
 export const APP_INFO = {
-    NAME: "AIC Project",
+    NAME: "Mustor",
     logo: "/logo.png",
 }
