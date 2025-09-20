@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import { RefObject, useEffect, useId, useState } from "react";
+import type { RefObject } from "react";
+import { useEffect, useId, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -94,7 +95,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
     // Initialize ResizeObserver
     const resizeObserver = new ResizeObserver((entries) => {
       // For all entries, recalculate the path
-      for (let entry of entries) {
+      for (const entry of entries) {
         updatePath();
       }
     });
@@ -129,7 +130,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
       height={svgDimensions.height}
       xmlns="http://www.w3.org/2000/svg"
       className={cn(
-        "pointer-events-none absolute left-0 top-0 transform-gpu stroke-2",
+        "top-0 left-0 absolute stroke-2 transform-gpu pointer-events-none",
         className,
       )}
       viewBox={`0 0 ${svgDimensions.width} ${svgDimensions.height}`}
