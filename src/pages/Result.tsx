@@ -58,7 +58,7 @@ export default function Result() {
             </CardHeader>
             <CardContent className="relative overflow-auto">
               <Tabs defaultValue="score" className="w-full">
-                <TabsList className="top-0 z-10 sticky border-b">
+                <TabsList className="top-0 z-10 sticky border-b text-">
                   <TabsTrigger value="score">Score</TabsTrigger>
                   <TabsTrigger value="detail">Detail</TabsTrigger>
                 </TabsList>

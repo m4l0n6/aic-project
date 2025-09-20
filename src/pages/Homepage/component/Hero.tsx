@@ -5,11 +5,11 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex items-center justify-center min-h-screen text-center px-4"
+      className="relative flex justify-center items-center px-4 min-h-screen text-center"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="mx-auto max-w-5xl">
         {/* Gradient heading */}
-        <h1 className="text-[80px] font-bold mb-6 leading-tight">
+        <h1 className="mb-6 font-bold text-[80px] leading-tight">
           <span
             className={`bg-clip-text text-transparent ${Setting.mainGradient}`}
           >
@@ -18,12 +18,12 @@ const Hero = () => {
         </h1>
 
         {/* Secondary heading */}
-        <h2 className="text-[60px] font-semibold mb-8 leading-snug text-white">
+        <h2 className="mb-8 font-semibold text-[60px] text-primary leading-snug">
           Progress Faster
         </h2>
 
         {/* Supporting text */}
-        <p className="text-[20px] text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+        <p className="mx-auto mb-12 max-w-3xl text-[20px] text-gray-400 leading-relaxed">
           Master the piano faster with instant, AI-driven feedback that helps
           refine your playing every step of the way.
         </p>
@@ -32,7 +32,7 @@ const Hero = () => {
         <div
           className={`inline-block rounded-full p-[2px] ${Setting.mainGradient}`}
         >
-          <div className="inline-block rounded-full bg-black">
+          <div className="inline-block bg-black rounded-full">
             <Button
               size="lg"
               variant="outline"

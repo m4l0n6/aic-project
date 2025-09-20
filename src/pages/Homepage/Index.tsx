@@ -2,9 +2,8 @@ import Header from "@/components/layouts/Header";
 import Hero from "@/pages/Homepage/component/Hero";
 import Features from "@/pages/Homepage/component/Features";
 import Footer from "@/components/layouts/Footer";
-import Testimonial02 from "@/components/testimonial-02/testimonial-02";
 import Pricing from "./component/Pricing";
-import Testimonial04 from "@/components/testimonial-04/testimonial-04";
+import Testimonial04 from "@/components/ui/shadcn-block/testimonial-04/testimonial-04";
 
 function HomePage() {
   return (

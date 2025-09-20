@@ -4,16 +4,16 @@ import Setting from "@/config"
 export default function Home() {
   return (
     <div className="bg-background p-6">
-      <div className="text-center mb-12">
+      <div className="mb-12 text-center">
         <p>
-          <span className="text-[60px] font-bold mb-6 leading-tight">Your Ultimate Music Companion</span>
+          <span className="mb-6 font-bold text-[60px] leading-tight">Your Ultimate Music Companion</span>
         </p>
       </div>
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="mx-auto max-w-7xl">
+        <div className="gap-6 grid grid-cols-1 md:grid-cols-2">
           {/* AI Performance Evaluation Card */}
           <Card className={`${Setting.cardBackgroundGradient} border-border relative overflow-hidden min-h-[380px]`}>
-            <div className="absolute bottom-5 right-4 flex items-center justify-center z-0 opacity-100">
+            <div className="right-4 bottom-5 z-0 absolute flex justify-center items-center opacity-100">
               <svg xmlns="http://www.w3.org/2000/svg" width="284" height="284" viewBox="0 0 24 24">
                 <title>star-sparkle</title>
                 <g fill="none">
@@ -69,11 +69,14 @@ export default function Home() {
                 </g>
               </svg>
             </div>
-            <CardHeader className="pb-4 relative z-10">
-              <CardTitle className="text-xl font-bold text-card-foreground">
+            <div className="bottom-5 left-5 z-0 absolute flex justify-center items-center opacity-100">
+              <a href="">View demo</a>
+            </div>
+            <CardHeader className="z-10 relative pb-4">
+              <CardTitle className="font-bold text-card-foreground text-xl">
                 AI Performance Evaluation
               </CardTitle>
-              <CardTitle className="text-sm text-muted-foreground">
+              <CardTitle className="text-muted-foreground text-sm">
                 Extracts notes, rhythm, and tempo from audio file, measures accuracy across
                 multiple criteria, and generates accurate feedback
               </CardTitle>
@@ -82,7 +85,7 @@ export default function Home() {
 
           {/* Audio-to-Sheet Conversion Card */}
           <Card className={`${Setting.cardBackgroundGradient} border-border relative overflow-hidden min-h-[380px]`}>
-            <div className="absolute right-2 flex items-center justify-center z-0 opacity-100">
+            <div className="right-2 z-0 absolute flex justify-center items-center opacity-100">
               <svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
                 <defs>
                   <linearGradient id="glassGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -142,9 +145,12 @@ export default function Home() {
                 </g>
               </svg>
             </div>
+            <div className="bottom-5 left-5 z-0 absolute flex justify-center items-center opacity-100">
+              <a href="">View demo</a>
+            </div>
             <CardHeader className="pb-4">
-              <CardTitle className="text-xl font-bold text-card-foreground">Audio-to-Sheet Conversion</CardTitle>
-              <CardTitle className="text-sm text-muted-foreground"> Transform any trending song into playable sheet music. </CardTitle>
+              <CardTitle className="font-bold text-card-foreground text-xl">Audio-to-Sheet Conversion</CardTitle>
+              <CardTitle className="text-muted-foreground text-sm"> Transform any trending song into playable sheet music. </CardTitle>
             </CardHeader>
           </Card>
         </div>
