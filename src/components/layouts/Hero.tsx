@@ -20,7 +20,7 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center bg-muted/50 mb-8 px-4 py-2 border border-border/50 rounded-full">
             <span className="text-muted-foreground text-sm">
-              ✨ 
+              ✨ New Feature: AI-powered Piano Tutor
             </span>
           </div>
 
