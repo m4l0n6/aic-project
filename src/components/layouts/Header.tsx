@@ -20,8 +20,8 @@ const Header = () => {
         <div className="flex justify-between items-center">
           <a href="/" className="flex items-center">
             <div>{/* Logo */}</div>
-            <span className="bg-clip-text bg-gradient-primary font-bold text-transparent text-2xl">
-              {APP_INFO.NAME}
+            <span className="bg-clip-text font-bold text-primary text-2xl">
+              {APP_INFO.NAME}.
             </span>
           </a>
 

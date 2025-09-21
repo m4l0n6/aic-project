@@ -20,7 +20,7 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center bg-muted/50 mb-8 px-4 py-2 border border-border/50 rounded-full">
             <span className="text-muted-foreground text-sm">
-              ✨ New Feature: AI-Powered Analytics
+              ✨ 
             </span>
           </div>
 
@@ -36,11 +36,11 @@ const Hero = () => {
 
           {/* Description */}
           <p className="mx-auto mb-8 max-w-2xl text-muted-foreground text-xl leading-relaxed">
-            The perfect{" "}
+            The Perfect{" "}
             <Highlighter action="underline" color="#FF9800">
-              AI tutor piano
+              AI Piano Tutor
             </Highlighter>{" "}
-            is your guide to mastering the piano with faster instant
+            guiding you to master the piano faster and smarter.
           </p>
 
           {/* CTA Buttons */}
